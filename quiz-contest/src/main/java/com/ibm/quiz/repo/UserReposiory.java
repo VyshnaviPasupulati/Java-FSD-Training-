@@ -6,4 +6,6 @@ import com.ibm.quiz.entity.User;
 
 public interface UserReposiory extends JpaRepository<User, Integer> {
 
+	User findByUsernameAndPassword(String username, String passwd);
+
 }
