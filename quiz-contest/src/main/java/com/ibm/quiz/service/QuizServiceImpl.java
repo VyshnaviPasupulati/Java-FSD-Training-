@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.ibm.quiz.entity.Option;
 import com.ibm.quiz.entity.Question;
 import com.ibm.quiz.entity.Quiz;
+import com.ibm.quiz.exception.InvalidRequestException;
 import com.ibm.quiz.repo.OptionRepository;
 import com.ibm.quiz.repo.QuestionRepository;
 import com.ibm.quiz.repo.QuizRepository;
@@ -30,7 +31,7 @@ public class QuizServiceImpl implements QuizService {
 
 	
 	@Override
-	public Quiz fetchQuiz(int qcode){
+	public Quiz fetchQuiz(int qcode) throws InvalidRequestException{
 		Quiz q =  zrepo.findById(qcode).get();
 		return q;
 	}

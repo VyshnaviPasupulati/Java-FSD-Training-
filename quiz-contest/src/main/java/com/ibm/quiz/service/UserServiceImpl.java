@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.quiz.entity.Login;
 import com.ibm.quiz.entity.User;
-import com.ibm.quiz.repo.UserReposiory;
+import com.ibm.quiz.exception.InvalidRequestException;
+import com.ibm.quiz.repo.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserReposiory repo;
+	private UserRepository repo;
 	@Override
 	public int addUser(User u) {
 		repo.save(u);
@@ -19,13 +20,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User fetchUser(int uid)  {
+	public User fetchUser(int uid) throws InvalidRequestException {
 		return repo.findById(uid).get();
 	}
 
 	@Override
 	public User ValidateLogin(Login login) {
-		return repo.findByUsernameAndPassword(login.getUsername(),login.getPasswd());
+		return repo.findbyUserNameAndPassword(login.getUsername(),login.getPasswd());
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.quiz.entity.Login;
 import com.ibm.quiz.entity.User;
+import com.ibm.quiz.exception.InvalidRequestException;
 import com.ibm.quiz.service.UserService;
 
 @RestController
@@ -58,7 +59,7 @@ public class UserController {
 		return "logged out successfully";
 	}
 	@GetMapping(value = "/get/{uid}", produces = "application/json")
-    public User fetchUser(@PathVariable("uid") int uid)  {
+    public User fetchUser(@PathVariable("uid") int uid) throws InvalidRequestException {
 		User u = service.fetchUser(uid);
 		return u;
 	}

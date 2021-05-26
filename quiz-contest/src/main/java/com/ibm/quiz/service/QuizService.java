@@ -3,12 +3,13 @@ package com.ibm.quiz.service;
 import com.ibm.quiz.entity.Option;
 import com.ibm.quiz.entity.Question;
 import com.ibm.quiz.entity.Quiz;
+import com.ibm.quiz.exception.InvalidRequestException;
 
 public interface QuizService {
 
     int addQuiz(Quiz q);
 	
-    Quiz fetchQuiz(int qcode);
+    Quiz fetchQuiz(int qcode) throws InvalidRequestException;
 	
     Question fetchhQuestion(int qid);
     

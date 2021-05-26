@@ -16,6 +16,7 @@ import com.ibm.quiz.entity.Option;
 import com.ibm.quiz.entity.Question;
 import com.ibm.quiz.entity.Quiz;
 import com.ibm.quiz.entity.User;
+import com.ibm.quiz.exception.InvalidRequestException;
 import com.ibm.quiz.service.QuizService;
 
 @RestController
@@ -55,7 +56,7 @@ public class QuizController {
 	}
 	
 	@GetMapping(value = "/get/{code}", produces = "application/json")
-	public ResponseEntity<?> getQuiz(@PathVariable int code, HttpSession session)  {
+	public ResponseEntity<?> getQuiz(@PathVariable int code, HttpSession session) throws InvalidRequestException {
 		if(session.getAttribute("USER") != null)
 		return new ResponseEntity<Quiz>(service.fetchQuiz(code), HttpStatus.OK);
 		else

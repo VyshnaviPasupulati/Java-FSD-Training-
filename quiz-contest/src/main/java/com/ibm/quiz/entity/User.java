@@ -17,7 +17,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	private int uid;
-	@Column(length = 20)
+	@Column(length=20)
 	private String username;
 	@Column(length=20)
 	private String passwd;
@@ -47,14 +47,6 @@ public class User {
 		this.username = username;
 	}
 
-	public String getResult() {
-		return result;
-	}
-
-	public void setResult(String result) {
-		this.result = result;
-	}
-
 	public String getPasswd() {
 		return passwd;
 	}
@@ -78,5 +70,15 @@ public class User {
 	public void setQuiz(Quiz quiz) {
 		this.quiz = quiz;
 	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	
+
 }
